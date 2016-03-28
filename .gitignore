@@ -18,3 +18,4 @@ target
 
 *.log
 bower_components
+.sass-cache

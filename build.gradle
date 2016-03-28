@@ -137,5 +137,25 @@ task copyBootstrap {
     }
 }
 
-generate.dependsOn copyBootstrap
-preview.dependsOn copyBootstrap
+task copyFontawesome {
+    inputs.file 'bower.json'
+    inputs.dir 'bower_components/fontawesome'
+
+    outputs.dir 'theme/fonts/vendor/fontawesome'
+    outputs.dir 'theme/sass/vendor/fontawesome'
+
+    doLast {
+        copy {
+            from "${bowerComponentsDir}/fontawesome/fonts"
+            into 'theme/fonts/vendor/fontawesome'
+        }
+        copy {
+            from "${bowerComponentsDir}/fontawesome/scss"
+            into 'theme/sass/vendor/fontawesome'
+            rename 'font-awesome.scss', '_fontawesome.scss'
+        }
+    }
+}
+
+generate.dependsOn copyBootstrap, copyFontawesome
+preview.dependsOn copyBootstrap, copyFontawesome
