@@ -6,6 +6,8 @@ import com.sysgears.theme.taglib.ThemeTagLib
 resource_mapper = new ResourceMapper(site).map
 tag_libs = [ThemeTagLib]
 
+binary_files += [/(?i).*\.woff2$/]
+
 features {
     highlight = 'pygments' // 'none', 'pygments'
     markdown = 'txtmark'   // 'txtmark', 'pegdown'
